@@ -1,0 +1,841 @@
+<html><head><meta charset="utf-8"><meta http-equiv="pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-store"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><title>Aviator</title><style>.start-loading {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      outline: 0;
+      text-align: center;
+      background-color: #000;
+    }
+    .start-loading-content {
+      position: relative;
+      top: 50%;
+      transform: translate(0%, -50%);
+      text-align: center;
+    }
+    .start-loading-content span {
+      font-size: 14px;
+      color: #fff;
+    }</style><link href="/800/v3/home/static/css/800.1d3c4d8174a86bafab93e15798659323.css" rel="stylesheet"><style>:root {
+  --background-color: #F6F4E9;
+
+  --text-color: #210803;
+  --text-color-light: #735d58;
+
+  --banner-background-color: #FF3500;
+  --banner-text-color: #F6F4E9;
+
+  --secondary-banner-background-color: #FFD6F8;
+  --secondary-banner-text-color: #FF3500;
+
+  --button-text-color: #F6F4E9;
+  --button-color: #6FB382;
+  --button-color-hover: #5A8F6F;
+  --button-color-active: #4C7B5A;
+  --button-color-disabled: #A3C6A9;
+
+  --switch-color: #FF3500;
+
+  --font-primary: 'Work Sans', sans-serif !important;
+
+  --menu-background: #fffefc;
+  --menu-background-grey-light: #f9f9f9;
+  --menu-background-grey-dark: #efefef;
+  --menu-background-highlight: #f8f5f1;
+  --menu-border: #d2c9bd;
+  --menu-text: #210803;
+  --menu-text-light: #735d58;
+  --menu-grey-dark: #999999;
+}</style><style>:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-toast-width: 320px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-font-family: sans-serif;
+  --toastify-z-index: 9999;
+  --toastify-text-color-light: #757575;
+  --toastify-text-color-dark: #fff;
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+}
+
+.Toastify__toast-container.rytrToastify {
+  z-index: var(--toastify-z-index);
+  -webkit-transform: translate3d(0, 0, var(--toastify-z-index));
+  transform: translate3d(0, 0, var(--toastify-z-index));
+  position: fixed;
+  padding: 4px;
+  width: var(--toastify-toast-width);
+  box-sizing: border-box;
+  color: #fff;
+}
+.Toastify__toast-container--top-left.rytrToastify {
+  top: 1em;
+  left: 1em;
+}
+.Toastify__toast-container--top-center.rytrToastify {
+  top: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Toastify__toast-container--top-right.rytrToastify {
+  top: 1em;
+  right: 1em;
+}
+.Toastify__toast-container--bottom-left.rytrToastify {
+  bottom: 1em;
+  left: 1em;
+}
+.Toastify__toast-container--bottom-center.rytrToastify {
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Toastify__toast-container--bottom-right.rytrToastify {
+  bottom: 1em;
+  right: 1em;
+}
+
+@media only screen and (max-width : 480px) {
+  .Toastify__toast-container.rytrToastify {
+    width: 100vw;
+    padding: 0;
+    left: 0;
+    margin: 0;
+  }
+  .Toastify__toast-container--top-left.rytrToastify, .Toastify__toast-container--top-center.rytrToastify, .Toastify__toast-container--top-right.rytrToastify {
+    top: 0;
+    transform: translateX(0);
+  }
+  .Toastify__toast-container--bottom-left.rytrToastify, .Toastify__toast-container--bottom-center.rytrToastify, .Toastify__toast-container--bottom-right.rytrToastify {
+    bottom: 0;
+    transform: translateX(0);
+  }
+  .Toastify__toast-container--rtl.rytrToastify {
+    right: 0;
+    left: initial;
+  }
+}
+.rytrToastify .Toastify__toast {
+  position: relative;
+  min-height: var(--toastify-toast-min-height);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  max-height: var(--toastify-toast-max-height);
+  overflow: hidden;
+  font-family: var(--toastify-font-family);
+  cursor: default;
+  direction: ltr;
+  /* webkit only issue #791 */
+  z-index: 0;
+}
+.rytrToastify .Toastify__toast--rtl {
+  direction: rtl;
+}
+.rytrToastify .Toastify__toast--close-on-click {
+  cursor: pointer;
+}
+.rytrToastify .Toastify__toast-body {
+  margin: auto 0;
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+  padding: 6px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.rytrToastify .Toastify__toast-body > div:last-child {
+  word-break: break-word;
+  -ms-flex: 1;
+      flex: 1;
+}
+.rytrToastify .Toastify__toast-icon {
+  -webkit-margin-end: 10px;
+          margin-inline-end: 10px;
+  width: 20px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rytrToastify .Toastify--animate {
+  animation-fill-mode: both;
+  animation-duration: 0.7s;
+}
+
+.rytrToastify .Toastify--animate-icon {
+  animation-fill-mode: both;
+  animation-duration: 0.3s;
+}
+
+@media only screen and (max-width : 480px) {
+  .rytrToastify .Toastify__toast {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+}
+.rytrToastify .Toastify__toast-theme--dark {
+  background: var(--toastify-color-dark);
+  color: var(--toastify-text-color-dark);
+}
+.rytrToastify .Toastify__toast-theme--light {
+  background: var(--toastify-color-light);
+  color: var(--toastify-text-color-light);
+}
+.rytrToastify .Toastify__toast-theme--colored.Toastify__toast--default {
+  background: var(--toastify-color-light);
+  color: var(--toastify-text-color-light);
+}
+.rytrToastify .Toastify__toast-theme--colored.Toastify__toast--info {
+  color: var(--toastify-text-color-info);
+  background: var(--toastify-color-info);
+}
+.rytrToastify .Toastify__toast-theme--colored.Toastify__toast--success {
+  color: var(--toastify-text-color-success);
+  background: var(--toastify-color-success);
+}
+.rytrToastify .Toastify__toast-theme--colored.Toastify__toast--warning {
+  color: var(--toastify-text-color-warning);
+  background: var(--toastify-color-warning);
+}
+.rytrToastify .Toastify__toast-theme--colored.Toastify__toast--error {
+  color: var(--toastify-text-color-error);
+  background: var(--toastify-color-error);
+}
+
+.rytrToastify .Toastify__progress-bar-theme--light {
+  background: var(--toastify-color-progress-light);
+}
+.rytrToastify .Toastify__progress-bar-theme--dark {
+  background: var(--toastify-color-progress-dark);
+}
+.rytrToastify .Toastify__progress-bar--info {
+  background: var(--toastify-color-progress-info);
+}
+.rytrToastify .Toastify__progress-bar--success {
+  background: var(--toastify-color-progress-success);
+}
+.rytrToastify .Toastify__progress-bar--warning {
+  background: var(--toastify-color-progress-warning);
+}
+.rytrToastify .Toastify__progress-bar--error {
+  background: var(--toastify-color-progress-error);
+}
+.rytrToastify .Toastify__progress-bar-theme--colored.Toastify__progress-bar--info, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+  background: var(--toastify-color-transparent);
+}
+
+.rytrToastify .Toastify__close-button {
+  color: #fff;
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s ease;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+.rytrToastify .Toastify__close-button--light {
+  color: #000;
+  opacity: 0.3;
+}
+.rytrToastify .Toastify__close-button > svg {
+  fill: currentColor;
+  height: 16px;
+  width: 14px;
+}
+.rytrToastify .Toastify__close-button:hover, .Toastify__close-button:focus {
+  opacity: 1;
+}
+
+@keyframes Toastify__trackProgress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+.rytrToastify .Toastify__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: var(--toastify-z-index);
+  opacity: 0.7;
+  transform-origin: left;
+}
+.rytrToastify .Toastify__progress-bar--animated {
+  animation: Toastify__trackProgress linear 1 forwards;
+}
+.rytrToastify .Toastify__progress-bar--controlled {
+  transition: transform 0.2s;
+}
+.rytrToastify .Toastify__progress-bar--rtl {
+  right: 0;
+  left: initial;
+  transform-origin: right;
+}
+
+.rytrToastify .Toastify__spinner {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 100%;
+  border-color: var(--toastify-spinner-color-empty-area);
+  border-right-color: var(--toastify-spinner-color);
+  animation: Toastify__spin 0.65s linear infinite;
+}
+
+@keyframes Toastify__bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+@keyframes Toastify__bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(20px, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+@keyframes Toastify__bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__bounceOutUp {
+  20% {
+    transform: translate3d(0, -10px, 0);
+  }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+@keyframes Toastify__bounceInDown {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutDown {
+  20% {
+    transform: translate3d(0, 10px, 0);
+  }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0);
+  }
+}
+.Toastify__bounce-enter--top-left, .Toastify__bounce-enter--bottom-left {
+  animation-name: Toastify__bounceInLeft;
+}
+.Toastify__bounce-enter--top-right, .Toastify__bounce-enter--bottom-right {
+  animation-name: Toastify__bounceInRight;
+}
+.Toastify__bounce-enter--top-center {
+  animation-name: Toastify__bounceInDown;
+}
+.Toastify__bounce-enter--bottom-center {
+  animation-name: Toastify__bounceInUp;
+}
+
+.Toastify__bounce-exit--top-left, .Toastify__bounce-exit--bottom-left {
+  animation-name: Toastify__bounceOutLeft;
+}
+.Toastify__bounce-exit--top-right, .Toastify__bounce-exit--bottom-right {
+  animation-name: Toastify__bounceOutRight;
+}
+.Toastify__bounce-exit--top-center {
+  animation-name: Toastify__bounceOutUp;
+}
+.Toastify__bounce-exit--bottom-center {
+  animation-name: Toastify__bounceOutDown;
+}
+
+@keyframes Toastify__zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes Toastify__zoomOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 0;
+  }
+}
+.Toastify__zoom-enter {
+  animation-name: Toastify__zoomIn;
+}
+
+.Toastify__zoom-exit {
+  animation-name: Toastify__zoomOut;
+}
+
+@keyframes Toastify__flipIn {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+@keyframes Toastify__flipOut {
+  from {
+    transform: perspective(400px);
+  }
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+.Toastify__flip-enter {
+  animation-name: Toastify__flipIn;
+}
+
+.Toastify__flip-exit {
+  animation-name: Toastify__flipOut;
+}
+
+@keyframes Toastify__slideInRight {
+  from {
+    transform: translate3d(110%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__slideInLeft {
+  from {
+    transform: translate3d(-110%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__slideInUp {
+  from {
+    transform: translate3d(0, 110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__slideInDown {
+  from {
+    transform: translate3d(0, -110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__slideOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(110%, 0, 0);
+  }
+}
+@keyframes Toastify__slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(-110%, 0, 0);
+  }
+}
+@keyframes Toastify__slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 500px, 0);
+  }
+}
+@keyframes Toastify__slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -500px, 0);
+  }
+}
+.Toastify__slide-enter--top-left, .Toastify__slide-enter--bottom-left {
+  animation-name: Toastify__slideInLeft;
+}
+.Toastify__slide-enter--top-right, .Toastify__slide-enter--bottom-right {
+  animation-name: Toastify__slideInRight;
+}
+.Toastify__slide-enter--top-center {
+  animation-name: Toastify__slideInDown;
+}
+.Toastify__slide-enter--bottom-center {
+  animation-name: Toastify__slideInUp;
+}
+
+.Toastify__slide-exit--top-left, .Toastify__slide-exit--bottom-left {
+  animation-name: Toastify__slideOutLeft;
+}
+.Toastify__slide-exit--top-right, .Toastify__slide-exit--bottom-right {
+  animation-name: Toastify__slideOutRight;
+}
+.Toastify__slide-exit--top-center {
+  animation-name: Toastify__slideOutUp;
+}
+.Toastify__slide-exit--bottom-center {
+  animation-name: Toastify__slideOutDown;
+}
+
+@keyframes Toastify__spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style><style>.lTQFuXa3V795C5xkFue4{position:absolute;z-index:10000;font-family:var(--font-primary)}.lTQFuXa3V795C5xkFue4 .iWziZuyXqpyUt1bsL0IH{display:flex;align-items:center;flex-direction:row;justify-content:center;padding:4px 8px 4px 8px;border-radius:16px;font-size:15px;color:var(--text-color);background:linear-gradient(135deg, #f5f5f5, #ffffff);box-shadow:0 4px 8px rgba(0,0,0,.1);cursor:pointer;transition:all .3s ease;border:1px solid #dedede;outline:none}.lTQFuXa3V795C5xkFue4 .iWziZuyXqpyUt1bsL0IH:hover{background:linear-gradient(135deg, #e8e8e8, #f2f2f2)}.lTQFuXa3V795C5xkFue4 .iWziZuyXqpyUt1bsL0IH:active{box-shadow:0 2px 4px rgba(0,0,0,.1)}.lTQFuXa3V795C5xkFue4 .iWziZuyXqpyUt1bsL0IH svg{padding-right:5px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC{position:relative;z-index:10001;border:none;background:rgba(0,0,0,0);outline:none;width:0;opacity:1;display:flex;flex-wrap:wrap;transition:width .3s ease;border-radius:16px;box-shadow:0px 8px 16px 0px rgba(0,0,0,.2)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1{background-color:var(--menu-background);width:320px;border-radius:16px;border:1px solid var(--menu-border);list-style-type:none;overflow:hidden;margin:0;padding:0}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1>li:not(:last-child){border-bottom:1px solid var(--menu-border)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1>li:hover{background-color:var(--menu-background-grey-light)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1>li.RjEGw7__KCRU7TstD5yi:hover{background-color:var(--menu-background-grey-dark)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 textarea{border:1px solid #dadce0;border-radius:8px;width:100%;padding:8px 16px;margin-bottom:0px;font-size:12px;color:#202124;box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 textarea::placeholder{color:#909090}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 textarea:focus{border-color:#4285f4;box-shadow:inset 0 1px 2px rgba(0,0,0,.1),0 0 5px #4285f4}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li{display:flex;align-items:center;color:var(--menu-text);background-color:var(--menu-background);padding:5px 10px;cursor:pointer}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li.M1KB5HVRjEpIQOFTpFYI{background-color:var(--menu-background-highlight)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li.RjEGw7__KCRU7TstD5yi{color:var(--text);padding:4px 10px;cursor:default;font-size:smaller;background-color:var(--menu-background-grey-dark)}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li.c2Mo1uGoaln4H69Y4E6E{padding:5px 5px;cursor:default}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li.c2Mo1uGoaln4H69Y4E6E .JdfvYk3lCxrQzQGl1YPC{width:100%;border:none;background-color:var(--menu-background);color:var(--text);font-size:12px;font-family:var(--font-primary);outline:none;border:1px solid var(--menu-border);border-radius:4px;padding:5px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li.c2Mo1uGoaln4H69Y4E6E .xV0FHpiM2qkoOC2vY58k{cursor:pointer;margin-left:6px;margin-right:3px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .xV0FHpiM2qkoOC2vY58k{margin-right:6px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .xV0FHpiM2qkoOC2vY58k svg{fill:var(--menu-text);height:15px;width:15px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .M6RHs88_2neTSi9YyzRQ{display:flex;flex-direction:column}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .tNZe3rLtPUTYH2eNgH1A{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .JJtTxV3rAXkXzvnysRyZ{display:block;color:var(--text-color-light);font-size:10px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .yF8sbhtgF4eBPgi1V9oR{display:none;position:absolute;top:0;background-color:rgba(0,0,0,0);min-width:160px;overflow-y:auto;box-shadow:0px 8px 16px 0px rgba(0,0,0,.2);z-index:10002;border-radius:16px;box-sizing:border-box;margin:0;padding:0}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .yF8sbhtgF4eBPgi1V9oR .l5dMX0rnbnLAPtixjeO1{max-width:300px}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 li .TMayNOEUbF0JizWEbQUg{display:block}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 .s6tqHEQp6XgjkJvknLPI{color:var(--menu-grey-dark);cursor:not-allowed;opacity:.6}.lTQFuXa3V795C5xkFue4 .RD1Ai85Kn_xeBWheZNQC .l5dMX0rnbnLAPtixjeO1 .s6tqHEQp6XgjkJvknLPI svg{fill:var(--menu-grey-dark);opacity:.6}</style><style>.rytr-highlight {
+  background-color: #fff8e1;
+}
+
+.rytr-svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+}
+
+.rytr-input {
+  all: unset;
+}
+</style><style>.I5H8iQYcyPeDiDhG4zqG{position:absolute;z-index:10030;display:flex;flex-direction:column;border-radius:16px;border:1px solid var(--menu-border);width:500px;font-family:var(--font-primary);font-size:13px;background-color:var(--menu-background);box-shadow:0px 8px 16px 0px rgba(0,0,0,.2);color:var(--menu-text)}.I5H8iQYcyPeDiDhG4zqG .Cd4AWk9UXGm4hnBwjs3T{display:flex;justify-content:space-between;align-items:center;padding:5px 5px 5px 15px;border-bottom:1px solid var(--menu-border)}.I5H8iQYcyPeDiDhG4zqG .l8NvOLyw8PYmsMI3uj70{resize:none;border:none;border-radius:0px;padding:10px;margin:0;height:130px;width:100%;font-size:13px;box-sizing:border-box;outline:none;background-color:var(--menu-background-grey-dark)}.I5H8iQYcyPeDiDhG4zqG .l8NvOLyw8PYmsMI3uj70:disabled{cursor:not-allowed}.I5H8iQYcyPeDiDhG4zqG .Wg7us6rc5FpDU09oA38o{display:flex;justify-content:flex-end;padding:5px 10px 5px 10px;border-top:1px solid var(--menu-border)}.I5H8iQYcyPeDiDhG4zqG .hpxV2cQQ_mT9Xf5iVMMD{z-index:10000;background-color:#fff;border:none;cursor:pointer;font-size:1em;padding:5px 10px}.I5H8iQYcyPeDiDhG4zqG .hpxV2cQQ_mT9Xf5iVMMD svg{padding-top:2px;fill:var(--menu-text);height:15px;width:15px}.I5H8iQYcyPeDiDhG4zqG .hpxV2cQQ_mT9Xf5iVMMD:disabled{cursor:not-allowed}.I5H8iQYcyPeDiDhG4zqG .fCi9bUcumrsxkErEMlfA,.I5H8iQYcyPeDiDhG4zqG .FZ_kr1w3Z7FybD1qht9h,.I5H8iQYcyPeDiDhG4zqG .ht8UEdqA4Uk9oOhboH0D{z-index:10000;background-color:#fff;border:none;cursor:pointer;font-size:1em;padding:5px 10px}.I5H8iQYcyPeDiDhG4zqG .fCi9bUcumrsxkErEMlfA:hover,.I5H8iQYcyPeDiDhG4zqG .FZ_kr1w3Z7FybD1qht9h:hover,.I5H8iQYcyPeDiDhG4zqG .ht8UEdqA4Uk9oOhboH0D:hover{background-color:var(--menu-background-grey-dark);border-radius:50%}.I5H8iQYcyPeDiDhG4zqG .fCi9bUcumrsxkErEMlfA svg,.I5H8iQYcyPeDiDhG4zqG .FZ_kr1w3Z7FybD1qht9h svg,.I5H8iQYcyPeDiDhG4zqG .ht8UEdqA4Uk9oOhboH0D svg{padding-top:2px;fill:#3e3836;height:15px;width:15px}.I5H8iQYcyPeDiDhG4zqG .fCi9bUcumrsxkErEMlfA:disabled,.I5H8iQYcyPeDiDhG4zqG .FZ_kr1w3Z7FybD1qht9h:disabled,.I5H8iQYcyPeDiDhG4zqG .ht8UEdqA4Uk9oOhboH0D:disabled{cursor:not-allowed}</style><style>.xGwuWv75A1fsmwXdyOEp{position:absolute;z-index:10000;font-family:var(--font-primary)}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3{position:relative;z-index:10001;border:none;background:var(--menu-background);outline:none;width:0;overflow:hidden;opacity:1;display:flex;flex-wrap:wrap;transition:width .3s ease;border-radius:16px;box-shadow:0px 8px 16px 0px rgba(0,0,0,.2);display:flex;flex-direction:column}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a{display:flex;justify-content:space-between}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a .bABWvikGld4cgzcobct3{margin-right:.5rem}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a .bABWvikGld4cgzcobct3 svg{fill:#909090;width:15px;height:15px}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a .DWwofTlZU_jmSQvgzCN9{border:none;cursor:pointer;font-size:1em;padding:2px 8px;background:none}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a .DWwofTlZU_jmSQvgzCN9 svg{fill:#909090;width:15px;height:15px}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .kKI45bOqNRRk4sknkb5a .DWwofTlZU_jmSQvgzCN9:disabled{cursor:not-allowed}.xGwuWv75A1fsmwXdyOEp .eYnk1OCM3cBKChoMxFe3 .oBD8h78yEUFB4ByRiogI{display:flex;flex-direction:column;flex-grow:1;overflow-y:auto;overflow-x:hidden;padding:0 .5rem;margin-bottom:.5rem}</style><style>.bZcvpc5FRxnonKlomSxg{all:unset;background-color:#ff3500;border-radius:50%;outline:none;box-shadow:0 0 0 1px rgba(0,0,0,.1);transition:opacity .3s ease-in-out;cursor:pointer;z-index:100020;padding:.4rem;width:18px;height:18px;display:flex;align-items:center;justify-content:center;opacity:1}.bZcvpc5FRxnonKlomSxg:disabled{display:none}.bZcvpc5FRxnonKlomSxg svg{fill:#f6f4e9;width:12px;height:12px}</style><style>.z7ZLgxVRdrh9sgq7ffwG{display:flex;align-items:center;font-size:12px;padding:2px 5px 5px 5px;color:#202124;font-family:var(--font-primary)}.z7ZLgxVRdrh9sgq7ffwG textarea{flex:1;border:1px solid #dadce0;border-radius:0 8px 8px 0;padding:4px 6px;margin-bottom:0px;font-size:12px;color:#202124;box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}.z7ZLgxVRdrh9sgq7ffwG textarea::placeholder{color:#909090}.z7ZLgxVRdrh9sgq7ffwG textarea:focus{border-color:#4285f4;box-shadow:inset 0 1px 2px rgba(0,0,0,.1),0 0 5px #4285f4}.z7ZLgxVRdrh9sgq7ffwG textarea:disabled{background:#f9f9f9;color:#d3d3d3;cursor:not-allowed}.z7ZLgxVRdrh9sgq7ffwG .yiQZkxkNiFCakYQSOlq3{cursor:pointer;width:110px}.z7ZLgxVRdrh9sgq7ffwG .yiQZkxkNiFCakYQSOlq3 select{border:none;background:rgba(0,0,0,0);padding:8px;-webkit-appearance:none;-moz-appearance:none;appearance:none;color:#202124}.z7ZLgxVRdrh9sgq7ffwG .yiQZkxkNiFCakYQSOlq3 select:focus{outline:none}.NKAQhawBjdyXvH074O9v{cursor:pointer;display:block;font-size:inherit;width:100%;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);background-color:#fffefc;color:#202124;padding:5px 10px;box-sizing:border-box;display:flex;align-items:center}.NKAQhawBjdyXvH074O9v:hover{background-color:#f9f9f9}.NKAQhawBjdyXvH074O9v.m65FDtp_5Oz05sUbqDdO{background-color:#f8f5f1}.NKAQhawBjdyXvH074O9v .QN2Esm7keceAUuJDRJEQ{margin-right:6px}.NKAQhawBjdyXvH074O9v .QN2Esm7keceAUuJDRJEQ svg{fill:var(--menu-text);height:15px;width:15px}.NKAQhawBjdyXvH074O9v .feTO8TGP9wrYOjpAhiiG{display:flex;flex-direction:column}.NKAQhawBjdyXvH074O9v .nbZuWTtdyoAsx6d6Fq0H{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:#202124}.NKAQhawBjdyXvH074O9v .yXJYXDyfGLbB3uvmWYMj{display:block;color:var(--text-color-light);font-size:10px}</style></head><body style="background-color: black;" class="scroll-restyle" data-new-gr-c-s-check-loaded="14.1176.0" data-gr-ext-installed=""><div class="start-loading" style="display: none;"><div class="start-loading-content"><span>Connection..</span></div></div><div id="app"><div class="w-100 h-100"><div data-v-5306db3e="" class="loading" style="display: none;"><div data-v-5306db3e="" class="loading-content"><img data-v-5306db3e="" src="/800/v3/home/static/img/img_loading800.518ddf7.png" class="loading-logo"> <div data-v-5306db3e="" class="loading-progress"><div data-v-5306db3e="" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="el-progress el-progress--line"><div class="el-progress-bar"><div class="el-progress-bar__outer" style="height: 6px; background-color: rgb(38, 40, 48);"><div class="el-progress-bar__inner" style="width: 100%; background-color: rgb(225, 11, 60);"><!----></div></div></div><div class="el-progress__text" style="font-size: 14.4px; color: rgb(225, 11, 60);">100%</div></div></div> <div data-v-5306db3e="" class="loading-tip"><div data-v-5306db3e=""><img data-v-5306db3e="" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEwOHB4IiBoZWlnaHQ9IjI4cHgiIHZpZXdCb3g9IjAgMCAxMDggMjgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQ5ICg1MTAwMikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+QXZpYXRvci10ZXh0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlN5bWJvbHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00OC4wMDAwMDAsIC0xMi4wMDAwMDApIiBmaWxsPSIjRTUwNTM5Ij4KICAgICAgICAgICAgPGcgaWQ9IkF2aWF0b3ItdGV4dCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDguMDAwMDAwLCAxMi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS44MzE2MjU5LDguNDYwODE2OTYgTDMyLjY1MTE0NzEsMjEuMTAwMzE4MiBDMzIuMzg2MTI5NywyMi4xMTA4MzE5IDMxLjc4OTg0MDQsMjIuOTgwNDg3OCAzMC44NTc5NzAxLDIzLjcwNTI0NTkgQzI5LjkyNjA5OTgsMjQuNDMwMDA0IDI4Ljk0MDYzMzQsMjQuNzk0NDAzIDI3LjkwOTExMjIsMjQuNzk0NDAzIEwzMi4wMjU3NzA2LDguNDYwODE2OTYgTDI2LjkzNjAzNDksOC40NjA4MTY5NiBMMjYuNDEwMDM5OSwxMC45MzcyNzU4IEwyMi4zMzA4MTgsMjcuMjcwODYxOCBMMjcuMjc5Njk1OCwyNy4yNzA4NjE4IEMyOS42OTQyMDk1LDI3LjI3MDg2MTggMzEuOTg4NjAzNSwyNi4zNzY0Mjc5IDM0LjE2NjkxNzcsMjQuNTkxNiBDMzYuMzQ1MjMxOSwyMi44MDY3NzIxIDM3LjcyODQ5MzgsMjAuNzA2ODMxOSAzOC4zMjQ3ODMsMTguMjkyMzE4MiBMNDAuMTYzNDc2MywxMC45MzcyNzU4IEw0MC43ODQ1NDM2LDguNDYwODE2OTYgTDM1LjgzMTYyNTksOC40NjA4MTY5NiBaIiBpZD0iRmlsbC0xIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNDkuNTUyMTIzNywwLjc0MTMyMTY5NiBDNDkuMTM3ODk5MywwLjI0ODQ1Mzg2NSA0OC41ODcxMjYyLDAuMDAwMTM0NjYzMzQyIDQ3Ljg5OTUzNTIsMC4wMDAxMzQ2NjMzNDIgQzQ3LjIwODE3MzYsMC4wMDAxMzQ2NjMzNDIgNDYuNTc4NDg3OCwwLjI0ODQ1Mzg2NSA0Ni4wMDI5MzY3LDAuNzQxMzIxNjk2IEM0NS40MzE0MjU0LDEuMjM0MTg5NTMgNDUuMDg3NzY0NiwxLjgyNjQzODkgNDQuOTc1NzI0NywyLjUxMzc2MDYgQzQ0Ljg1NTYwNSwzLjIzMDQzODkgNDUuMDA0ODEyLDMuODMwNzY4MDggNDUuNDE5MDM2NCw0LjMyMzYzNTkxIEM0NS44Mjg5NTE2LDQuODE2NTAzNzQgNDYuMzc5NzI0Nyw1LjA2NTA5MjI3IDQ3LjA2NzMxNTcsNS4wNjUwOTIyNyBDNDcuNzU4OTQ2Niw1LjA2NTA5MjI3IDQ4LjM5MjQwMyw0LjgxMjE5NDUxIDQ4Ljk2ODIyMzQsNC4zMDcyMDY5OCBDNDkuNTM5NzM0NywzLjgwMTY4MDggNDkuODg3NzA0NywzLjIwNTM5MTUyIDQ5Ljk5OTIwNiwyLjUxMzc2MDYgQzUwLjExMTI0NTksMS44MjY0Mzg5IDQ5Ljk2MjAzODksMS4yMzQxODk1MyA0OS41NTIxMjM3LDAuNzQxMzIxNjk2IE00NC45MDk0NzAzLDIyLjk0NzMwNjcgQzQ0LjkxODA4ODgsMjIuODk3NzUwNiA0NC45MzQ1MTc3LDIyLjgzNTUzNjIgNDQuOTU5Mjk1OCwyMi43NjA5MzI3IEM0NC45ODQwNzM4LDIyLjY4NjMyOTIgNDUuMDAwNzcyMSwyMi42NDA4MTMgNDUuMDA0ODEyLDIyLjYxMTcyNTcgTDQ4LjU0NTY0OTksOC40NjA3NjMwOSBMNDAuMzQxNjg5OCw4LjQ2MDc2MzA5IEwzOS43MTYzMTMyLDEwLjkzNzIyMTkgTDQzLjAwMDIxMzUsMTAuOTM3MjIxOSBMNDAuMDUxODk0MywyMi42MTE3MjU3IEM0MC4wMTA0MTgsMjIuNzE1NDE2NSAzOS45NzcyOTA4LDIyLjg2MDMxNDIgMzkuOTQ0MTYzNiwyMy4wNTkwNzczIEMzOS43MzI3NDIxLDI0LjMzODkxNzcgNDAuMDU5OTc0MSwyNS4zNTM0NzEzIDQwLjkyMTI4MDgsMjYuMTA3MzE2NyBDNDEuNzgyODU2OSwyNi44NTY4NTI5IDQzLjA2MjQyNzksMjcuMjMzNjQwOSA0NC43NjQ4NDE5LDI3LjIzMzY0MDkgTDQ1LjUwMTcxOTcsMjcuMjMzNjQwOSBMNDYuMTMxMTM2MiwyNC43NTcxODIgQzQ1LjE0NTY2OTgsMjQuNjEyMjg0MyA0NC43MzU0ODUzLDI0LjAwNzY0NTkgNDQuOTA5NDcwMywyMi45NDczMDY3IiBpZD0iRmlsbC0zIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNTguNTU1MzM3NywyMS45ODY1OTE1IEM1OC4zNTY1NzQ2LDIyLjc0ODUxNjcgNTcuOTE3NTcyMSwyMy40MDI5ODA1IDU3LjIzODU5OTUsMjMuOTQ1NDA0NSBDNTYuNTU5MzU3NiwyNC40ODgwOTc4IDU1LjgzNDU5OTUsMjQuNzU3MTU1MSA1NS4wNzI0MDUsMjQuNzU3MTU1MSBDNTMuNjQzNjI2OSwyNC43NTcxNTUxIDUzLjA0MzI5NzgsMjQuMDY5NTY0MSA1My4yNjY4Mzg5LDIyLjY4NjMwMjIgQzUzLjI3MTE0ODEsMjIuNjY1ODMzNCA1My4yODc1NzcxLDIyLjYwMzYxOSA1My4zMTY2NjQzLDIyLjUwNDIzNzQgQzUzLjM0NTQ4MjMsMjIuNDA0ODU1OSA1My4zNjIxODA1LDIyLjMzMDI1MjQgNTMuMzcwMjYwMywyMi4yODA2OTYzIEw1NS43NDMyOTc4LDEyLjc4NDIzNzQgQzU2LjA2NjQ4OTgsMTEuNTU0NDkxOCA1Ni43NDU0NjIzLDEwLjkzNzE5NSA1Ny43ODEwMjM0LDEwLjkzNzE5NSBMNjEuMzMwMjEwNSwxMC45MzcxOTUgTDU4LjU1NTMzNzcsMjEuOTg2NTkxNSBaIE02My4xNjQ1OTQ1LDIzLjM5MDU5MTUgQzYzLjE3Mjk0MzYsMjMuMzQwNzY2MSA2My4xODk2NDE5LDIzLjI5MTIxIDYzLjIxMDM4LDIzLjI0MTM4NDUgQzYzLjIzMTExODIsMjMuMTkxODI4NCA2My4yNDM1MDcyLDIzLjE0NjA0MjkgNjMuMjUxNTg3LDIzLjA5NjQ4NjggTDY2LjkwODUwNDcsOC40NjA3MzYxNiBMNTguMzczMjcyOCw4LjQ2MDczNjE2IEM1Ni41OTY1MjQ3LDguNDYwNzM2MTYgNTQuOTQ0MjA1NSw4Ljk2MTk1MzEyIDUzLjQxNTc3NjYsOS45NjAwNzc4MSBDNTEuODgzNTc3MSwxMC45NTc5MzMyIDUwLjkzNTI3NzgsMTIuMjA4Njg2MyA1MC41NjY1Njk2LDEzLjcwODAyNzkgTDQ4LjUwNDMzNTIsMjEuOTg2NTkxNSBDNDguNDU4ODE5LDIyLjExMDc1MTEgNDguNDIxNjUxOSwyMi4yNjgwMzc5IDQ4LjM5MjI5NTMsMjIuNDY3MDcwMyBDNDguMTY0NzE0MiwyMy44NDYwMjI5IDQ4LjU2NjI4MDMsMjQuOTg1MDA1NSA0OS42MDE1NzIxLDI1Ljg4MzQ3OTMgQzUwLjYzNjg2MzgsMjYuNzgyMjIyNCA1MS45OTEzMDc3LDI3LjIzMzYxNCA1My42Njg2NzQzLDI3LjIzMzYxNCBMNTQuNDQzMjU3OSwyNy4yMzM2MTQgQzU1Ljg5NjU0NDYsMjcuMjMzNjE0IDU3LjI0NjY3OTMsMjYuNzI4NjI2NCA1OC40OTc0MzI0LDI1LjcxNzg0MzQgQzU5LjEyMjgwOSwyNi43Mjg2MjY0IDYwLjI5NDkxODcsMjcuMjMzNjE0IDYyLjAxNzgwMTUsMjcuMjMzNjE0IEw2My43NTY4NDM5LDI3LjIzMzYxNCBMNjQuMzgyNDg5OCwyNC43NTcxNTUxIEM2My40Mjk4ODEzLDI0LjcwNzMyOTcgNjMuMDI0MDA2LDI0LjI1MTg5ODMgNjMuMTY0NTk0NSwyMy4zOTA1OTE1IFoiIGlkPSJGaWxsLTUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik04Ny4xODQ2NTY0LDEzLjMwMjA5ODggTDg3LjExODQwMiwxMy43MDc5NzQxIEw4NS4wNjAyMDc1LDIxLjk4NjUzNzcgQzg0Ljg0MDcwNjIsMjIuODcyODkxOCA4NC40ODAzNDcxLDIzLjU1NjE3MzYgODMuOTgzNDM5NCwyNC4wMzY2NTI0IEM4My40ODY1MzE3LDI0LjUxNjg2MTggODIuOTY4ODg1OCwyNC43NTcxMDEyIDgyLjQyNjQ2MTgsMjQuNzU3MTAxMiBDODEuOTMzNTk0LDI0Ljc1NzEwMTIgODEuNTU2NTM2NywyNC41Mzc2IDgxLjI5NTgyODQsMjQuMDkwMjQ4NCBDODEuMDM0ODUwOSwyMy42NDcyMDYgODAuOTY0NTU2NiwyMy4wODQwNDM5IDgxLjA3NjA1NzksMjIuMzkyNDEzIEM4MS4wODQ0MDcsMjIuMzQyNTg3NSA4MS4xMDExMDUyLDIyLjI3NjMzMzIgODEuMTMwMTkyNSwyMi4xODk2MSBDODEuMTU0OTcwNiwyMi4xMDIzNDgxIDgxLjE3MTY2ODgsMjIuMDM2MzYzMSA4MS4xNzk3NDg2LDIxLjk4NjUzNzcgTDgzLjIzNzk0MzEsMTMuNzA3OTc0MSBDODMuNDQ1MDU1NCwxMi44OTYyMjM0IDgzLjc4ODcxNjIsMTIuMjM3NzE5NyA4NC4yNjUxNTUxLDExLjczMjQ2MjggQzg0Ljc0MTMyNDcsMTEuMjI3NDc1MyA4NS4yNzUzOTk1LDEwLjk3NDU3NzYgODUuODY3NjQ4OSwxMC45NzQ1Nzc2IEM4Ni4zNjA1MTY3LDEwLjk3NDU3NzYgODYuNzMzMjY0OCwxMS4xNzc2NDk5IDg2Ljk4NTg5MzMsMTEuNTgzNTI1MiBDODcuMjM4NTIxNywxMS45OTM0NDA0IDg3LjMwOTA4NTMsMTIuNTY0OTUxNiA4Ny4xODQ2NTY0LDEzLjMwMjA5ODggTTkwLjk1MzM0NDYsOS44MTA4MTY5NiBDODkuOTMwNDQxOSw4LjkxMjM0MzE0IDg4LjU4NDYxNjUsOC40NjA2ODIyOSA4Ni45MDcyNDk5LDguNDYwNjgyMjkgTDg2LjEzMjY2NjMsOC40NjA2ODIyOSBDODQuMzA2NjMxNCw4LjQ2MDY4MjI5IDgyLjY0MTY1MzksOC45NjYyMDg0OCA4MS4xMzQyMzI0LDkuOTc2NzIyMTkgQzc5LjYyNjU0MTYsMTAuOTg3MjM1OSA3OC42OTA5MDA3LDEyLjIzMzY3OTggNzguMzI2NTAxNywxMy43MDc5NzQxIEw3Ni4yMjY1NjE2LDIxLjk4NjUzNzcgQzc2LjE4NTM1NDYsMjIuMTEwNjk3MyA3Ni4xNDM4NzgzLDIyLjI2ODI1MzQgNzYuMTE0NzkxLDIyLjQ2NzAxNjUgQzc1Ljg4MjkwMDcsMjMuODcwNzQ3MSA3Ni4yODQ0NjY4LDI1LjAxNDAzODkgNzcuMzI0MDY3OCwyNS45MDQ0MzI5IEM3OC4zNTk2Mjg5LDI2Ljc5MDUxNzcgNzkuNzMwMjMyNCwyNy4yMzM4Mjk0IDgxLjQyODA2NzgsMjcuMjMzODI5NCBMODIuMTY1NDg0MywyNy4yMzM4Mjk0IEM4My45NjcwMTA1LDI3LjIzMzgyOTQgODUuNjIzNjM4OSwyNi43MjAyMjM0IDg3LjE0NzQ4OTMsMjUuNzAxMzYwNiBDODguNjcxNjA5LDI0LjY3ODQ1NzkgODkuNjExNTU5MSwyMy40NDAwOTM4IDg5Ljk3NTk1ODEsMjEuOTg2NTM3NyBMOTIuMDcxNTg5LDEzLjcwNzk3NDEgTDkyLjE1MDIzMjQsMTMuMjMxODA0NSBDOTIuMzc0MDQyOSwxMS44NDg1NDI2IDkxLjk3NjI0NzQsMTAuNzA5ODI5NCA5MC45NTMzNDQ2LDkuODEwODE2OTYiIGlkPSJGaWxsLTciPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMDYuMTk3OCw4LjQ2MDgxNjk2IEMxMDQuMjAxODIsOC40NjA4MTY5NiAxMDIuNDc0NjI4LDguOTkwODUxODcgMTAxLjAyMTA3MiwxMC4wNTExOTEgTDEwMS4zOTM4Miw4LjQ2MDgxNjk2IEw5Ni40NjU2ODA4LDguNDYwODE2OTYgTDkxLjczNjAzNDksMjcuMjMzNjk0OCBMOTYuNjg5MjIxOSwyNy4yMzM2OTQ4IEw5OS4yNjEwMjI0LDE2Ljk2MzE5MSBDOTkuNTg4MjU0NCwxNS43MDQwODg4IDEwMC4yMzAwNiwxNC41Mjc5MzkyIDEwMS4xODY3MDgsMTMuNDM0NzQyMSBDMTAyLjE0MzM1NywxMi4zMzcyMzU5IDEwMy4yMjAxMjUsMTEuNTc5MzUwNiAxMDQuNDI1MzYyLDExLjE2MTA4NjMgTDEwMy44MzcxNTIsMTMuNjAwMzc4MSBMMTA2LjUzNzQyMSwxMy42MDAzNzgxIEwxMDcuODU4NDY5LDguNDYwODE2OTYgTDEwNi4xOTc4LDguNDYwODE2OTYgWiIgaWQ9IkZpbGwtOSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTEyLjY2NDM4NywxMy45NDc1MTMyIEwxMi42NzI0NjY4LDEzLjg5MTc2MjYgTDE0Ljk0MzY5ODgsNS4wMjkwMjk0MyBDMTUuMTExMjIsNC4yODc4NDIzOSAxNS40NjE4ODMzLDMuNjc0MDQ2ODggMTUuOTk1Njg4OCwzLjE5NTcyMjY5IEMxNi41MzAwMzI5LDIuNzE3OTM3MTYgMTcuMTM1NDc5MywyLjQ3ODUwNTc0IDE3Ljc5Njk0NTYsMi40Nzg1MDU3NCBDMTguNDE4ODIwOSwyLjQ3ODUwNTc0IDE4Ljg3MjkwNTcsMi42ODU4ODcyOCAxOS4xNzU4OTgzLDMuMTA4MTkxNTIgQzE5LjQ3MDgxMSwzLjUyMjY4NTI5IDE5LjU3NDIzMjQsNC4wNTY0OTA3NyAxOS40NzA4MTEsNC42OTQ1MjU2OSBMMTkuNDE1MDYwMyw1LjAyOTAyOTQzIEwxNy4xNDM1NTkxLDEzLjg5MTc2MjYgTDE3LjEyNzY2ODgsMTMuOTQ3NTEzMiBMMTIuNjY0Mzg3LDEzLjk0NzUxMzIgWiBNMjMuMDAxNDE0NSwxLjQwMjU0NTY0IEMyMS44Njk3MDM3LDAuNDcwMTM2NjU4IDIwLjM0NzQ2OTMsMC4wMDAxNjE1OTYwMSAxOC40MjY2MzE0LDAuMDAwMTYxNTk2MDEgQzE2LjMzMDczMTIsMC4wMDAxNjE1OTYwMSAxNC40ODk2MTQsMC41MjYxNTY2MDggMTIuODg3NjU4OSwxLjU3MDMzNjE2IEMxMS4yODU3MDM3LDIuNjE0MjQ2MzggMTAuMjczMzA0Nyw0LjAwMTAwOTQ4IDkuODQyOTIwNyw1LjczMDM1NjExIEw3Ljc4NjYxMTQ3LDEzLjg5MTc2MjYgQzYuMDQ5MTg1MDQsMTMuODkxNzYyNiA0LjQzOTE1MDEyLDEzLjg5OTU3MzEgMy4xODc4NTgzNSwxMy44OTk1NzMxIEMxLjQxODkyMDcsMTMuODk5NTczMSAwLjAwMDEwNzczMDY3MywxNS4zNDIzNTYxIDAuMDAwMTA3NzMwNjczLDE3LjExMTgzMjQgTDYuOTczNzgzNTQsMTcuMTExODMyNCBMNC40MzEzMzk2NSwyNy4yMzMzOTg1IEw5LjM0MDg5NTc2LDI3LjIzMzM5ODUgTDExLjg5MTQxOTUsMTcuMTExODMyNCBMMTYuMzYyNTExNywxNy4xMTE4MzI0IEwxNC43NzY0NDY5LDIzLjM5MTk5MiBDMTQuNzI4Nzc2MSwyMy41MTE1NzMxIDE0LjY5NjcyNjIsMjMuNjcxMDE0NSAxNC42NjQ5NDU2LDIzLjg3MDMxNjIgQzE0LjQ4OTYxNCwyNC45MzAzODYgMTQuNjk2NzI2MiwyNS43NTg4MzQ5IDE1LjI5NDM2MjEsMjYuMzQ4OTI5NyBDMTUuODg0MTg3NSwyNi45Mzg0ODU4IDE2Ljc4NDgxNiwyNy4yMzMzOTg1IDE3Ljk4ODE2NzYsMjcuMjMzMzk4NSBMMTkuOTQ5MTM1MiwyNy4yMzMzOTg1IEwyMC41Nzg1NTE2LDI0Ljc1NDc4NSBDMTkuODY5MTQ1MSwyNC43MDcxMTQyIDE5LjU3NDIzMjQsMjQuMzI0NDAxIDE5LjY5NDA4MjgsMjMuNjE0OTk0NSBMMjQuMTgxMDY1Myw1LjczMDM1NjExIEMyNC4xODg4NzU4LDUuNjc0ODc0ODEgMjQuMjA1MDM1NCw1LjU3ODk5NDUxIDI0LjI0NDg5NTgsNS40MzU0NDMzOSBDMjQuMjg0NzU2MSw1LjI4NDA4MTggMjQuMzAwNjQ2NCw1LjE4ODIwMTUgMjQuMzA4NDU2OSw1LjEzMjcyMDIgQzI0LjU2MzUwOTIsMy41ODY1MTU3MSAyNC4xMjUwNDU0LDIuMzQzMDM0NDEgMjMuMDAxNDE0NSwxLjQwMjU0NTY0IFoiIGlkPSJGaWxsLTEyIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNzYuMDk0MTA2Nyw4LjQ2MDgxNjk2IEw3Ny4yMTYzOTEsNC4xMDQxODg1MyBMNzIuMjYzMjA0LDQuMTA0MTg4NTMgTDcxLjE3ODM1NjEsOC40NjA4MTY5NiBMNjguNzQ3NDEzNSw4LjQ2MDgxNjk2IEw2OC4xMTc3Mjc3LDEwLjkzNzI3NTggTDcwLjU1Mjk3OTYsMTAuOTM3Mjc1OCBMNjcuNTk2MDQxOSwyMi42NDkyMTYgQzY3LjU4NzY5MjgsMjIuNjk5MDQxNCA2Ny41NjcyMjM5LDIyLjc4NjAzMzkgNjcuNTMzODI3NCwyMi45MTAxOTM1IEM2Ny41MDA3MDAyLDIzLjAzNDM1MzEgNjcuNDg0MjcxMywyMy4xMTczMDU3IDY3LjQ3NTkyMjIsMjMuMTcwOTAxNyBDNjcuMjY4ODEsMjQuNDI1Njk0OCA2Ny41MTMwODkzLDI1LjQxNTczOTcgNjguMjA0NzIwMiwyNi4xNDQ1Mzc3IEM2OC45MDA2NjAzLDI2Ljg2OTI5NTggNjkuOTQ4MzQxMSwyNy4yMzM2OTQ4IDcxLjM1MjA3MTgsMjcuMjMzNjk0OCBMNzMuMDkxNjUyOSwyNy4yMzM2OTQ4IEw3My43MjUxMDkyLDI0LjcxOTc5OTUgQzcyLjcwNjUxNTcsMjQuNjI0NzI3MiA3Mi4yODM5NDIxLDI0LjA0NDg2NjggNzIuNDU4MTk2NSwyMi45ODQ3OTcgQzcyLjQ2NjI3NjMsMjIuOTM0OTcxNiA3Mi40ODI3MDUyLDIyLjg3Mjc1NzEgNzIuNTA3NDgzMywyMi43OTg0MjI5IEM3Mi41Mjg0OTA4LDIyLjcyMzU1MDEgNzIuNTQ1MTg5LDIyLjY3ODAzMzkgNzIuNTQ5MjI4OSwyMi42NDkyMTYgTDc1LjUwMTg1NzQsMTAuOTM3Mjc1OCBMNzcuNjA5ODc3MywxMC45MzcyNzU4IEw3OC4yMzk1NjMxLDguNDYwODE2OTYgTDc2LjA5NDEwNjcsOC40NjA4MTY5NiBaIiBpZD0iRmlsbC0xNCI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=" class="tip-logo"><span data-v-5306db3e="">Is a verifiably 100% fair game</span></div> <div data-v-5306db3e="" class="tip-text"><span data-v-5306db3e="">if you find that the game has modified the game results and submit evidence to customer service,you can receive a maximum compensation of 100000 USDT</span></div></div></div></div> <div></div> <div class="main-wrapper hide-chat-bar"><div class="main-container"><div data-v-1d9eac7d="" class="main-header"><div data-v-1d9eac7d="" class="header h-100 d-flex justify-content-between align-items-center"><div data-v-1d9eac7d="" class="first-block h-100 d-flex align-items-center"><div data-v-1d9eac7d="" class="game-logo h-100 ml-1 ml-md-2 logo-800"></div></div> <div data-v-1d9eac7d="" class="second-block d-flex"><button data-v-1d9eac7d="" class="btn btn-warning btn-sm btn-quick-help disabled-on-game-focused shadow-none mr-1 p-0 px-1 ng-star-inserted"><div data-v-1d9eac7d="" class="question-i d-inline-block align-middle"></div> <div data-v-1d9eac7d="" class="d-none d-md-inline-block align-middle pl-1">
+          How to play?
+        </div></button> <div data-v-1d9eac7d="" class="d-flex h-100"><div data-v-1d9eac7d="" class="balance px-2 d-flex justify-content-end align-items-center"><div data-v-1d9eac7d=""><span data-v-1d9eac7d="" class="amount font-weight-bold">
+              3.40 
+            </span> <span data-v-1d9eac7d="" class="currency">₹</span></div></div> <div data-v-09b75da8="" data-v-1d9eac7d=""><div data-v-09b75da8="" class="user-wrapper h-100 dropdown"><div data-v-09b75da8="" aria-expanded="false" class="user w-100 h-100 px-2 d-flex align-items-center position-relative disabled-on-game-focused"><div data-v-09b75da8="" class="burger-i h-100"></div></div> <div data-v-09b75da8="" x-placement="bottom-right" class="user-menu-dropdown dropdown-menu hide"><div data-v-09b75da8="" class="user"><div data-v-09b75da8="" class="first-block p-2"><div data-v-09b75da8="" class="user-info"><div data-v-09b75da8="" class="avatar"><img data-v-09b75da8="" src="/800/v3/home/static/img/av_1.d0af0e5.png"></div> <div data-v-09b75da8="" class="name">8proc_6056072</div></div> <div data-v-09b75da8="" class="dropdown-item avatar-change"><div data-v-09b75da8="" class="avatar-logo"></div> <div data-v-09b75da8="" class="change-text"><div data-v-09b75da8="">change</div> <div data-v-09b75da8="">Avatar</div></div></div></div> <div data-v-09b75da8="" class="second-block"><div data-v-09b75da8="" class="list-menu pb-3"><div data-v-09b75da8="" class="list-menu-item"><div data-v-09b75da8="" class="title"><div data-v-09b75da8="" class="icon-wrapper"><div data-v-09b75da8="" class="sound-icon"></div></div> <span data-v-09b75da8="" class="title-text">sound</span></div> <div data-v-09b75da8="" class="switch"><div data-v-7948331f="" data-v-09b75da8="" class="ng-untouched ng-dirty ng-valid ng-untouched ng-pristine ng-valid"><div data-v-7948331f="" class="input-switch off"><span data-v-7948331f="" class="oval"></span></div></div></div></div> <div data-v-09b75da8="" class="list-menu-item"><div data-v-09b75da8="" class="title"><div data-v-09b75da8="" class="icon-wrapper"><div data-v-09b75da8="" class="music-icon"></div></div> <span data-v-09b75da8="" class="title-text">music</span></div> <div data-v-09b75da8="" class="switch"><div data-v-7948331f="" data-v-09b75da8="" class="ng-untouched ng-dirty ng-valid ng-untouched ng-pristine ng-valid"><div data-v-7948331f="" class="input-switch off"><span data-v-7948331f="" class="oval"></span></div></div></div></div> <div data-v-09b75da8="" class="list-menu-item"><div data-v-09b75da8="" class="title"><div data-v-09b75da8="" class="icon-wrapper"><div data-v-09b75da8="" class="animation-icon"></div></div> <span data-v-09b75da8="" class="title-text">animation</span></div> <div data-v-09b75da8="" class="switch"><div data-v-7948331f="" data-v-09b75da8="" class="ng-untouched ng-dirty ng-valid ng-untouched ng-pristine ng-valid"><div data-v-7948331f="" class="input-switch off"><span data-v-7948331f="" class="oval"></span></div></div></div></div></div> <div data-v-09b75da8="" class="list-menu"><div data-v-09b75da8="" class="dropdown-item list-menu-item info-item"><div data-v-09b75da8="" class="title"><div data-v-09b75da8="" class="icon-wrapper"><div data-v-09b75da8="" class="icon history-icon"></div></div> <div data-v-09b75da8="" class="title-text-info text-capitalize">
+                  My Bet History
+                </div></div></div> <div data-v-09b75da8="" class="dropdown-item list-menu-item info-item"><div data-v-09b75da8="" class="title"><div data-v-09b75da8="" class="icon-wrapper"><div data-v-09b75da8="" class="icon limits-icon"></div></div> <div data-v-09b75da8="" class="title-text-info text-capitalize">
+                  game limits
+                </div></div></div></div></div> <div data-v-09b75da8="" class="logout ng-star-inserted"><span data-v-09b75da8=""></span></div></div></div></div> <div data-v-785edffd="" data-v-09b75da8=""><div data-v-785edffd="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="game limits" class="el-dialog el-dialog-normal dialog-content dialog-game-limits" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">game limits</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div> <div data-v-d2c6c45a="" data-v-09b75da8=""><div data-v-d2c6c45a="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="CHOOSE GAME AVATAR" class="el-dialog el-dialog-normal dialog-content dialog-head-list" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">CHOOSE GAME AVATAR</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div> <div data-v-f49edfe2="" data-v-09b75da8=""><div data-v-f49edfe2="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="My Bet History" class="el-dialog el-dialog-normal dialog-content dialog-my-history" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">My Bet History</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><div class="el-dialog__footer"><div data-v-f49edfe2="" center="" class="dialog-footer"><div data-v-f49edfe2="" class="btns-wrapper"><button data-v-f49edfe2="" disabled="disabled" class="btn btn-sm btn-primary reset-btn mr-1"> previous page </button> <span data-v-f49edfe2="" class="page">0/0</span> <button data-v-f49edfe2="" disabled="disabled" class="btn btn-sm btn-primary start-btn ml-1"> next page </button></div></div></div></div></div></div></div></div></div></div></div> <div class="w-100 h-100"><div data-v-32e90b3d="" class="game-container"><div data-v-dd4428d8="" data-v-32e90b3d="" class="info-board pt-2"><div data-v-dd4428d8="" class="bets-widget-box"><div data-v-dd4428d8="" class="bets-block"><div data-v-187d6752="" data-v-dd4428d8="" class="controls h-100"><div data-v-187d6752="" class="navigation"><div data-v-187d6752="" class="navigation-switcher"><div data-v-187d6752="" class="slider" style="transform: translate(0px); width: 100px;"></div> <button data-v-187d6752="" class="tab ng-star-inserted active" style="width: 100px;">
+        All Bets
+      </button><button data-v-187d6752="" class="tab ng-star-inserted " style="width: 100px;">
+        My Bets
+      </button></div></div> <div data-v-187d6752="" class="switcher-panel"><div data-v-dd4428d8="" data-title="All Bets" data-name="first" class="w-100 h-100" data-v-187d6752=""><div data-v-3784c2be="" data-v-dd4428d8="" class="data-list w-100 h-100"><div data-v-3784c2be="" class="d-flex h-100 flex-column"><div data-v-3784c2be="" class="header-wrapper"><div data-v-3784c2be="" class="all-bets-block d-flex justify-content-between align-items-center px-2 pb-1"><div data-v-3784c2be=""><div data-v-3784c2be="" class="text-uppercase"> All Bets </div> <div data-v-3784c2be="">306159</div></div></div> <div data-v-3784c2be="" class="spacer"></div> <div data-v-3784c2be="" class="legend d-flex align-items-center mx-2"><span data-v-3784c2be="" translate="" class="user">User</span> <span data-v-3784c2be="" class="bet"> Bet, ₹ </span> <span data-v-3784c2be="">X</span> <span data-v-3784c2be="" class="cash-out"> Cash out, ₹ </span></div></div> <div data-v-3784c2be="" class="h-100 scroll-y cdk-virtual-scroll-orientation-vertical"><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_6.6fbdf86.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_64.b833909.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">q***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_64.b833909.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">q***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_64.b833909.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">l***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_24.8b68126.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***0</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_15.2e3c76d.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">m***5</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_71.782171c.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">1***g</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_2.ec18b14.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_2.ec18b14.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_42.96962d9.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">x***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_31.d783919.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">8***1</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_53.13f26b2.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">x***3</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_53.13f26b2.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">x***3</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_64.b833909.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">f***3</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_64.b833909.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">f***3</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_68.7960dac.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">a***2</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_31.d783919.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">v***5</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_2.ec18b14.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">g***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">8000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_4.11baa39.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">s***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">7964.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_3.e4fbdf3.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">7940.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_6.6fbdf86.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">w***9</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">7515.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_39.5171f6b.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">p***7</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6883.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_8.4fb7e09.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">k***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6758.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_32.680a4ae.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">z***5</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6623.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_47.382cdb1.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">h***7</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6607.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_13.89b2f79.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">l***n</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6537.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_10.ad8f3d2.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">p***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6330.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_55.2e38f92.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">h***1</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6250.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_25.fdb3eb0.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">g***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">6169.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_9.3a475a6.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">y***2</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">5929.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_5.af96f6e.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">s***9</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">5661.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_12.3edae9c.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">s***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">5383.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_51.11fb813.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">w***1</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">5350.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_7.c86a1e9.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">q***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">4901.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_37.3a440cd.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">a***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">4659.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_70.7491c57.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">p***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3716.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_50.cea45fb.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">l***9</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3438.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_51.11fb813.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">q***6</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3176.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_52.7240483.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">l***8</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3075.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_5.af96f6e.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">h***9</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3019.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_5.af96f6e.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">8***5</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">3000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_39.5171f6b.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">c***1</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">2346.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_15.2e3c76d.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">l***2</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1841.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_6.6fbdf86.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">h***3</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1577.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_44.03ca91b.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">w***n</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1317.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_58.5c0ec41.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">q***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1284.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_68.7960dac.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">k***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1265.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_1.d0af0e5.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">8***4</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_5.af96f6e.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">8***9</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div><div data-v-fdbe4392="" data-v-3784c2be="" class="ng-star-inserted"><div data-v-fdbe4392="" class="bet-item d-flex align-items-center"><div data-v-fdbe4392="" class="user d-flex align-items-center"><img data-v-fdbe4392="" src="/800/v3/home/static/img/av_1.d0af0e5.png" class="avatar mr-1"> <div data-v-fdbe4392="" class="username">8***5</div></div> <div data-v-fdbe4392="" class="bet d-flex justify-content-end"><div data-v-fdbe4392=""><div data-v-fdbe4392="" class="ng-star-inserted">1000.00</div></div></div> <div data-v-fdbe4392="" class="multiplier-block d-flex align-items-center"><div data-v-fdbe4392=""><!----></div></div> <div data-v-fdbe4392="" class="cash-out"><!----></div></div></div></div></div></div></div> <div data-v-dd4428d8="" data-title="My Bets" data-name="second" class="w-100 h-100" data-v-187d6752="" style="display: none;"><div data-v-4be229b1="" data-v-dd4428d8="" class="data-list ng-star-inserted"><div data-v-4be229b1="" class="legend px-2 d-flex align-items-center w-100"><div data-v-4be229b1="" class="date">Date</div> <div data-v-4be229b1="" class="d-flex w-100"><span data-v-4be229b1="" class="bet"> Bet, ₹ </span> <span data-v-4be229b1=""> X </span> <span data-v-4be229b1="" class="cash-out"> Cash out, ₹ </span></div> <div data-v-4be229b1="" class="tools h-100"></div></div> <div data-v-4be229b1="" class="h-100 scroll-y"></div></div></div></div></div></div></div> <div data-v-dd4428d8="" class="footer-box"><div data-v-dd4428d8="" class="footer px-2"><div data-v-dd4428d8="" class="provably-fair-block"><span data-v-dd4428d8="" translate="">This game is </span> <div data-v-dd4428d8="" class="provably-fair disabled-on-game-focused"><div data-v-dd4428d8="" class="i-fair"></div> <span data-v-dd4428d8="" class="text-provably-fair">Provably Fair</span></div></div> <div data-v-dd4428d8="" class="logo-block disabled-on-game-focused"><span data-v-dd4428d8="">Powered by</span> <div data-v-dd4428d8="" class="i-logo i-logo-800"></div></div></div></div></div> <div data-v-1a7a655c="" data-v-32e90b3d="" class="game-play hide"><div data-v-1a7a655c="" class="result-history"><div data-v-8b7ea73a="" data-v-1a7a655c="" class="result-history disabled-on-game-focused my-2"><div data-v-8b7ea73a="" placement="bottom-right" class="stats dropdown"><div data-v-8b7ea73a="" class="payouts-wrapper"><div data-v-8b7ea73a="" class="payouts-block"><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  4.29x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.46x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.13x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.09x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.73x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.12x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.66x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.47x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.00x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.57x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.47x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.40x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  7.22x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.00x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.00x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.18x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.96x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.48x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  7.21x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.41x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.12x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.90x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  4.05x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.07x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  4.84x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.13x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.01x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.92x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.98x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.18x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  5.43x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.69x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.98x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.97x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.39x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-3" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  20.85x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.06x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.35x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.79x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.30x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.54x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.75x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.69x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-3" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  10.26x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.33x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  8.56x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.04x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.85x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.94x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-3" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  23.01x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.85x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  7.71x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.91x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-3" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  50.76x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.15x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-1" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.90x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-3" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  17.85x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  2.02x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.09x
+</div><div data-v-238abc1a="" data-v-8b7ea73a="" class="bubble-multiplier font-weight-bold payout ng-star-inserted col-2" id="rvcel" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  3.45x
+</div></div></div> <div data-v-8b7ea73a="" class="button-block"><div data-v-8b7ea73a="" id="pMore" class="button"><div data-v-8b7ea73a="" class="trigger"><div data-v-8b7ea73a="" class="history-icon"></div> <div data-v-8b7ea73a="" class="dd-icon" style="transform: rotate(0deg);"></div></div></div></div> <!----></div></div></div> <div data-v-1a7a655c="" class="sha-popover"><span data-v-1a7a655c=""><div role="tooltip" id="el-popover-3107" aria-hidden="true" class="el-popover el-popper" tabindex="0" style="display: none;"><!----><div data-v-1a7a655c="" class="sha-cotent"><div data-v-1a7a655c="" class="sha-title"><button data-v-1a7a655c="" type="button" class="close"><span data-v-1a7a655c="">×</span></button></div> <div data-v-1a7a655c="" class="sha-list"><div data-v-1a7a655c="" class="sha-list-item"><div data-v-1a7a655c="" class="sha-list-item-tilte">Round No：</div> <div data-v-1a7a655c="" class="sha-list-item-content">105528850456275392 </div></div> <div data-v-1a7a655c="" class="sha-list-item"><div data-v-1a7a655c="" class="sha-list-item-tilte">Original Seed:</div> <div data-v-1a7a655c="" class="sha-list-item-content"></div></div> <div data-v-1a7a655c="" class="sha-list-item"><div data-v-1a7a655c="" class="sha-list-item-tilte">Result Cipher：</div> <div data-v-1a7a655c="" class="sha-list-item-content">a79292201390d30bb5573f83cf109f18163e6532be4a013ef1fb1d6aee2fc742</div></div> <div data-v-1a7a655c="" class="sha-list-item"><div data-v-1a7a655c="" class="sha-list-item-tilte">Seed Cipher：</div> <div data-v-1a7a655c="" class="sha-list-item-content">3a715bb13e217b66a620fbcd7d7126e64fc027677087877b6b365d391aae489a</div></div> <div data-v-1a7a655c="" class="sha-list-item"><div data-v-1a7a655c="" class="sha-list-item-tilte">Result：</div> <div data-v-1a7a655c="" class="sha-list-item-content"></div></div> <div data-v-1a7a655c="" class="sha-buttons"><button data-v-1a7a655c="" class="btn btn-sm btn-warning copy-btn"> copy </button> <button data-v-1a7a655c="" class="btn btn-sm btn-success copy-btn" disabled="disabled"> validate </button></div></div></div> </div><span class="el-popover__reference-wrapper"><div data-v-1a7a655c="" class="qihao el-popover__reference" aria-describedby="el-popover-3107" tabindex="0"><div data-v-1a7a655c="" class="qihao-txt"><div data-v-1a7a655c="" class="qihao-no"><div data-v-1a7a655c="" class="qihao-bg light"></div><span data-v-1a7a655c="">Round No： 105528850456275392</span></div> <div data-v-1a7a655c="" class="button-block"><div data-v-1a7a655c="" class="button"><div data-v-1a7a655c="" class="trigger"><div data-v-1a7a655c="" class="dd-icon" style="transform: rotate(0deg);"></div></div></div></div></div></div></span></span> <div data-v-1a7a655c="">Ping:243ms</div></div> <div data-v-1a7a655c="" class="stage-board"><div data-v-2d6ee8d4="" data-v-1a7a655c=""><div data-v-2d6ee8d4="" class="play-board-wrapper"><div data-v-2d6ee8d4="" class="stage-canvas"><canvas data-v-2d6ee8d4="" class="w-100 h-100" width="192" height="407" style="touch-action: none; width: 128px; height: 271.333px; cursor: inherit;"></canvas></div> <div data-v-2d6ee8d4="" class="dom-container"></div></div></div></div> <div data-v-1a7a655c="" class="bet-controls"><div data-v-1a7a655c="" class="w-100"><div data-v-1a7a655c="" class="controls controls-wrap"><div data-v-10e5c842="" data-v-1a7a655c="" class="bet-control double-bet"><div data-v-10e5c842="" class="controls"><div data-v-187d6752="" data-v-10e5c842="" class="controls h-100"><div data-v-187d6752="" class="navigation"><div data-v-187d6752="" class="navigation-switcher"><div data-v-187d6752="" class="slider" style="transform: translate(0px); width: 100px;"></div> <button data-v-187d6752="" class="tab ng-star-inserted active" style="width: 100px;">
+        Bet
+      </button><button data-v-187d6752="" class="tab ng-star-inserted " style="width: 100px;">
+        Auto
+      </button></div></div> <div data-v-187d6752="" class="switcher-panel" style="display: none;"><div data-v-10e5c842="" data-title="Bet" data-name="first" data-v-187d6752=""></div> <div data-v-10e5c842="" data-title="Auto" data-name="second" data-v-187d6752="" style="display: none;"></div></div></div> <div data-v-10e5c842="" class="w-100 controls"><div data-v-10e5c842="" class="first-row auto-game-feature auto-game"><div data-v-10e5c842="" class="bet-block"><div data-v-0bb826fc="" data-v-10e5c842="" class="spinner ng-untouched ng-valid ng-dirty"><div data-v-0bb826fc="" class="spinner big"><div data-v-0bb826fc="" class="buttons"><button data-v-0bb826fc="" type="button" class="minus ng-star-inserted"></button></div> <div data-v-0bb826fc="" class="input full-width"><input data-v-0bb826fc="" type="text" oninput="value=value.replace(/[^\d^.]/g,'')" class="font-weight-bold"></div> <div data-v-0bb826fc="" class="buttons"><button data-v-0bb826fc="" type="button" class="plus ng-star-inserted"></button></div></div> <!----></div> <div data-v-10e5c842="" class="bets-opt-list"><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 10 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 100 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 500 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 1000 </span></button></div></div> <div data-v-10e5c842="" class="buttons-block"><button data-v-10e5c842="" class="btn btn-success bet ng-star-inserted"><span data-v-10e5c842="" class="d-flex flex-column justify-content-center align-items-center"><label data-v-10e5c842="" class="label text-uppercase"> Bet </label> <label data-v-10e5c842="" class="amount"><span data-v-10e5c842="">10.00₹</span></label></span></button> <!----> <!----> <!----></div></div> <!----> <!----></div></div> <div data-v-018f9f29="" data-v-10e5c842=""><div data-v-018f9f29="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="auto play options" class="el-dialog el-dialog-normal dialog-content dialog-auto-play-selected" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">auto play options</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><div class="el-dialog__footer"><div data-v-018f9f29="" center="" class="dialog-footer"><div data-v-018f9f29="" class="btns-wrapper"><button data-v-018f9f29="" class="btn btn-sm btn-warning reset-btn"> reset </button> <button data-v-018f9f29="" class="btn btn-lg btn-success start-btn"> start </button></div></div></div></div></div></div></div> <div data-v-10e5c842="" data-v-1a7a655c="" class="bet-control double-bet"><div data-v-10e5c842="" class="controls"><div data-v-187d6752="" data-v-10e5c842="" class="controls h-100"><div data-v-187d6752="" class="navigation"><div data-v-187d6752="" class="navigation-switcher"><div data-v-187d6752="" class="slider" style="transform: translate(0px); width: 100px;"></div> <button data-v-187d6752="" class="tab ng-star-inserted active" style="width: 100px;">
+        Bet
+      </button><button data-v-187d6752="" class="tab ng-star-inserted " style="width: 100px;">
+        Auto
+      </button></div></div> <div data-v-187d6752="" class="switcher-panel" style="display: none;"><div data-v-10e5c842="" data-title="Bet" data-name="first" data-v-187d6752=""></div> <div data-v-10e5c842="" data-title="Auto" data-name="second" data-v-187d6752="" style="display: none;"></div></div></div> <div data-v-10e5c842="" class="w-100 controls"><div data-v-10e5c842="" class="first-row auto-game-feature auto-game"><div data-v-10e5c842="" class="bet-block"><div data-v-0bb826fc="" data-v-10e5c842="" class="spinner ng-untouched ng-valid ng-dirty"><div data-v-0bb826fc="" class="spinner big"><div data-v-0bb826fc="" class="buttons"><button data-v-0bb826fc="" type="button" class="minus ng-star-inserted"></button></div> <div data-v-0bb826fc="" class="input full-width"><input data-v-0bb826fc="" type="text" oninput="value=value.replace(/[^\d^.]/g,'')" class="font-weight-bold"></div> <div data-v-0bb826fc="" class="buttons"><button data-v-0bb826fc="" type="button" class="plus ng-star-inserted"></button></div></div> <!----></div> <div data-v-10e5c842="" class="bets-opt-list"><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 10 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 100 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 500 </span></button><button data-v-10e5c842="" class="btn btn-secondary btn-sm bet-opt ng-star-inserted"><span data-v-10e5c842=""> 1000 </span></button></div></div> <div data-v-10e5c842="" class="buttons-block"><button data-v-10e5c842="" class="btn btn-success bet ng-star-inserted"><span data-v-10e5c842="" class="d-flex flex-column justify-content-center align-items-center"><label data-v-10e5c842="" class="label text-uppercase"> Bet </label> <label data-v-10e5c842="" class="amount"><span data-v-10e5c842="">10.00₹</span></label></span></button> <!----> <!----> <!----></div></div> <!----> <!----></div></div> <div data-v-018f9f29="" data-v-10e5c842=""><div data-v-018f9f29="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="auto play options" class="el-dialog el-dialog-normal dialog-content dialog-auto-play-selected" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">auto play options</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><div class="el-dialog__footer"><div data-v-018f9f29="" center="" class="dialog-footer"><div data-v-018f9f29="" class="btns-wrapper"><button data-v-018f9f29="" class="btn btn-sm btn-warning reset-btn"> reset </button> <button data-v-018f9f29="" class="btn btn-lg btn-success start-btn"> start </button></div></div></div></div></div></div></div></div></div></div> <div data-v-cd5ee692="" data-v-1a7a655c=""><div data-v-cd5ee692="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="Round No:105528247265028544" class="el-dialog el-dialog-normal dialog-content dialog-check-round-seed" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">Round No:105528247265028544</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><div class="el-dialog__footer"><div data-v-cd5ee692="" center="" class="dialog-footer help">
+      For instructions check
+      <span data-v-cd5ee692="" class="ng-tns-c27-3"> What is Provably Fair </span></div></div></div></div></div></div></div></div></div> <div data-v-cd5ee692=""><div data-v-cd5ee692="" class="el-dialog__wrapper" style="z-index: 2007; display: none;"><div role="dialog" aria-modal="true" aria-label="Round No:105528247265028544" class="el-dialog el-dialog-normal dialog-content dialog-check-round-seed" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">Round No:105528247265028544</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><div class="el-dialog__body"><div data-v-cd5ee692="" class="header"><div data-v-cd5ee692="" class="header__info ng-star-inserted"><div data-v-cd5ee692="" class="bubble-multiplier-wrapper"><div data-v-238abc1a="" data-v-cd5ee692="" class="bubble-multiplier font-weight-bold col-1" style="padding: 2px 11px; margin: 2px 4px; border-radius: 11px; cursor: pointer;"> 
+  1.13x
+</div></div> <div data-v-cd5ee692="" class="header__info-time"> 03:55:21 </div></div> <button data-v-cd5ee692="" class="btn btn-sm btn-warning copy-btn"> copy </button></div> <div data-v-cd5ee692="" class="content-wrapper"><div data-v-cd5ee692="" class="content ng-star-inserted"><div data-v-cd5ee692="" class="content-part"><div data-v-cd5ee692="" class="title"><div data-v-cd5ee692="" class="icon-server flex-shrink-0"></div> <div data-v-cd5ee692="" class="text"><span data-v-cd5ee692="" translate="">Seed: </span> <div data-v-cd5ee692="" translate="" class="tip">Generated before the game starts</div></div></div> <div data-v-cd5ee692="" class="value"><input data-v-cd5ee692="" type="text" readonly="readonly" class="value-input ng-untouched ng-pristine ng-valid"></div></div> <div data-v-cd5ee692="" class="content-part pt-3"><div data-v-cd5ee692="" class="title"><div data-v-cd5ee692="" class="icon-hash flex-shrink-0"></div> <div data-v-cd5ee692="" class="text"><span data-v-cd5ee692="" translate="">Seed after SHA256 encryption:</span> <div data-v-cd5ee692="" translate="" class="tip">Generated before the game starts</div></div></div> <div data-v-cd5ee692="" class="value"><input data-v-cd5ee692="" type="text" readonly="readonly" class="value-input ng-untouched ng-pristine ng-valid"></div></div> <div data-v-cd5ee692="" class="content-part client pt-3"><div data-v-cd5ee692="" class="title"><div data-v-cd5ee692="" class="icon-client flex-shrink-0"></div> <div data-v-cd5ee692="" class="text"><span data-v-cd5ee692="" translate="">Game Result: 1.13x </span></div></div></div> <div data-v-cd5ee692="" class="content-part"><div data-v-cd5ee692="" class="title"><div data-v-cd5ee692="" class="icon-server flex-shrink-0"></div> <div data-v-cd5ee692="" class="text"><span data-v-cd5ee692="" translate="">Original Seed plus game result characters:</span> <div data-v-cd5ee692="" translate="" class="tip"></div></div></div> <div data-v-cd5ee692="" class="value"><input data-v-cd5ee692="" type="text" readonly="readonly" class="value-input ng-untouched ng-pristine ng-valid"></div></div> <div data-v-cd5ee692="" class="content-part pt-3"><div data-v-cd5ee692="" class="title"><div data-v-cd5ee692="" class="icon-hash flex-shrink-0"></div> <div data-v-cd5ee692="" class="text"><span data-v-cd5ee692="" translate="">Encrypted by SHA256:</span> <div data-v-cd5ee692="" translate="" class="tip">It is obtained by encrypting the seed plus game result string with SHA256.</div></div></div> <div data-v-cd5ee692="" class="value"><input data-v-cd5ee692="" type="text" readonly="readonly" class="value-input ng-untouched ng-pristine ng-valid"></div></div></div></div> </div><div class="el-dialog__footer"><div data-v-cd5ee692="" center="" class="dialog-footer help">
+      For instructions check
+      <span data-v-cd5ee692="" class="ng-tns-c27-3"> What is Provably Fair </span></div></div></div></div></div> <div data-v-62a8d869=""><div data-v-62a8d869="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="Game Rules" class="el-dialog el-dialog-normal dialog-content dialog-game-rules" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">Game Rules</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div> <div data-v-0fafe9d6=""><div data-v-0fafe9d6="" class="el-dialog__wrapper" style="display: none;"><div role="dialog" aria-modal="true" aria-label="What is provably fair?" class="el-dialog el-dialog-normal dialog-content dialog-green-detailed" style="margin-top: 15vh;"><div class="el-dialog__header"><span class="el-dialog__title">What is provably fair?</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div> <!----></div></div><script type="text/javascript" src="/800/v3/home/static/js/manifest.b8845b87e6d8a875404d.js"></script><script type="text/javascript" src="/800/v3/home/static/js/vendor.7bc6bbd75af47bba67b2.js"></script><script type="text/javascript" src="/800/v3/home/static/js/800.3702f08bb4e0feab3edf.js"></script><div class="glasp-ui-wrapper" id="glasp-ui-wrapper" style="height: 0px; width: 0px; padding: 0px;"><iframe name="glasp-tooltip-iframe" id="glasp-tooltip-iframe" style="display: none;"></iframe><iframe name="glasp-sidebar-iframe" id="glasp-sidebar-iframe" style="display: none !important;width: 0px !important; min-width: 0px !important; max-width: 300px; height: 100%; background: #FFFFFF; resize: horizontal; direction: rtl; margin: auto; position: fixed; top: 0px; right: 0px; left: auto; z-index: 9000000000000000000;border: none !important;"></iframe></div><div id="yt_article_summary_widget_wrapper" class="yt_article_summary_widget_wrapper" style="display: none;">
+        <div id="yt_article_summary_widget" class="yt_article_summary_widget"><svg style="filter: brightness(0.8);" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="path-1-outside-1_3606_3145" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22" fill="black">
+                <rect fill="white" x="1" y="1" width="22" height="22"></rect>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z"></path>
+                </mask>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z" fill="#828282"></path>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z" stroke="#828282" stroke-width="0.2" mask="url(#path-1-outside-1_3606_3145)"></path>
+            </svg></div>
+        <div id="yt_article_summary_close_button" class="yt_article_summary_close_button">×</div>
+    </div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
